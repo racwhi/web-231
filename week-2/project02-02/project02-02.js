@@ -3,8 +3,8 @@
       Project 02-02
 
       Application to test for completed form
-      Author: Rachel White
-      Date:   8/25/2024
+      Author: 
+      Date:   
 
       Filename: project02-02.js
  */
