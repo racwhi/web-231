@@ -10,7 +10,7 @@
 /* --------------------------------------------------------------*/
 
 /* Styles for the box containing the slideshow and tools */
-div#lightbox {
+div#lightBox {
   position: relative;
   width: 960px;
   height: 170px;
@@ -18,7 +18,7 @@ div#lightbox {
 }
 
 /* Styles for slideshow title */
-div#lightbox h1#lbTitle {
+div#lightBox h1#lbTitle {
   width: 100%;
   text-align: center;
   font-size: 2.4em;
@@ -28,8 +28,8 @@ div#lightbox h1#lbTitle {
 }
 
 /* Styles for the left and right arrows to move through the slideshow */
-div#lightbox div#lbPrev,
-div#lightbox div#lbNext {
+div#lightBox div#lbPrev,
+div#lightBox div#lbNext {
   position: absolute;
   width: 5%;
   height: 30px;
@@ -47,23 +47,23 @@ div#lightbox div#lbNext {
 }
 
 /* Hovering styles for the left and right arrows */
-div#lightbox div#lbPrev:hover,
-div#lightbox div#lbNext:hover {
+div#lightBox div#lbPrev:hover,
+div#lightBox div#lbNext:hover {
   background: rgba(0, 0, 0, 0.5);
 }
 
 /* Horizontal position of the left arrow */
-div#lightbox div#lbPrev {
+div#lightBox div#lbPrev {
   left: 0px;
 }
 
 /* Horizontal position of the right arrow */
-div#lightbox div#lbNext {
+div#lightBox div#lbNext {
   right: 0px;
 }
 
 /* Styles for the box containing slide images */
-div#lightbox div#lbImages {
+div#lightBox div#lbImages {
   display: flex;
   flex-direction: row; /* Place images within a flexbox on a single row */
   flex-wrap: nowrap;
@@ -73,7 +73,7 @@ div#lightbox div#lbImages {
 }
 
 /* Styles for the box containing the slide counter */
-div#lightbox div#lbCounter {
+div#lightBox div#lbCounter {
   position: absolute;
   z-index: 1;
   width: 70px;
@@ -93,7 +93,7 @@ div#lightbox div#lbCounter {
 }
 
 /* Styles for the play-pause button */
-div#lightbox div#lbPlay {
+div#lightBox div#lbPlay {
   position: absolute;
   top: 250px;
   left: 47.5%;
@@ -108,7 +108,7 @@ div#lightbox div#lbPlay {
 }
 
 /* Hovering styles for the play-pause button */
-div#lightbox div#lbPlay:hover {
+div#lightBox div#lbPlay:hover {
   position: absolute;
   top: 250px;
   left: 47.5%;

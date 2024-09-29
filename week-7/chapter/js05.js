@@ -37,16 +37,29 @@ function createLightbox() {
   lightBox.appendChild(lbPrev);
   lbPrev.id = "lbPrev";
   lbPrev.innerHTML = "&#9664;";
+  lbPrev.onclick = showPrev;
 
   //Design lightbox next slide button
   lightBox.appendChild(lbNext);
   lbNext.id = "lbNext";
   lbNext.innerHTML = "&#9654;";
+  lbNext.onclick = showNext;
 
   //Design lightbox play/pause buttons
   lightBox.appendChild(lbPlay);
   lbPlay.id = "lbPlay";
   lbPlay.innerHTML = "&#9199;";
+  let timeID;
+  lbPlay.onclick = function () {
+    if (timeID) {
+      //stop the slideshow
+      window.clearInterval(timeID);
+      timeID = undefined;
+    } else {
+      showNext();
+      timeID = window.setInterval(showNext, 1500);
+    }
+  };
 
   //Design lightbox image container
   lightBox.appendChild(lbImages);
@@ -57,7 +70,50 @@ function createLightbox() {
     let image = document.createElement("img");
     image.src = imgFiles[i];
     image.alt = imgCaptions[i];
+    image.onclick = createOverlay;
     lbImages.appendChild(image);
+  }
+  //function to move forward through images
+  function showNext() {
+    lbImages.appendChild(lbImages.firstElementChild);
+    currentImg < imgCount ? currentImg++ : (currentImg = 1);
+    lbCounter.textContent = currentImg + " / " + imgCount;
+  }
+
+  //function to move images backwards
+  function showPrev() {
+    lbImages.insertBefore(
+      lbImages.lastElementChild,
+      lbImages.firstElementChild
+    );
+    currentImg > 1 ? currentImg-- : (currentImg = imgCount);
+    lbCounter.textContent = currentImg + " / " + imgCount;
+  }
+  function createOverlay() {
+    let overlay = document.createElement("div");
+    overlay.id = "lbOverlay";
+
+    //add fogure box to overlay
+    let figureBox = document.createElement("figure");
+    overlay.appendChild(figureBox);
+
+    let overlayImage = this.cloneNode(true);
+    figureBox.appendChild(overlayImage);
+
+    let overlayCaption = document.createElement("figcaption");
+    overlayCaption.textContent = this.alt;
+    figureBox.appendChild(overlayCaption);
+
+    //add close button to overlay
+    let closeBox = document.createElement("div");
+    closeBox.id = "lbOverlayClose";
+    closeBox.innerHTML = "&times;";
+    closeBox.onclick = function () {
+      document.body.removeChild(overlay);
+    };
+    overlay.appendChild(closeBox);
+
+    document.body.appendChild(overlay);
   }
 }
 
@@ -70,9 +126,10 @@ function setupGallery() {
   let runShow = true;
   let showRunning;
 
+  let slidesTitle = "EXAMPLE"; //update
   let galleryTitle = document.createElement("h1");
   galleryTitle.id = "galleryTitle";
-  galleryTitle.textContent = slidesTitle;
+  galleryTitle.textContent = slidesTitle; //update
   galleryBox.appendChild(galleryTitle);
 
   let slideCounter = document.createElement("div");
@@ -111,7 +168,7 @@ function setupGallery() {
   }
 
   function moveToRight() {
-    let firstImage = slideBox.firstElementChild.cloneNode("true");
+    let firstImage = slideBox.firstElementChild.cloneNode(true);
     firstImage.onclick = createModal;
     slideBox.appendChild(firstImage);
     slideBox.removeChild(slideBox.firstElementChild);
@@ -123,7 +180,7 @@ function setupGallery() {
   }
 
   function moveToLeft() {
-    let lastImage = slideBox.lastElementChild.cloneNode("true");
+    let lastImage = slideBox.lastElementChild.cloneNode(true);
     lastImage.onclick = createModal;
     slideBox.removeChild(slideBox.lastElementChild);
     slideBox.insertBefore(lastImage, slideBox.firstElementChild);
@@ -150,7 +207,7 @@ function setupGallery() {
     let figureBox = document.createElement("figure");
     modalWindow.appendChild(figureBox);
 
-    let modalImage = this.cloneNode("true");
+    let modalImage = this.cloneNode(true);
     figureBox.appendChild(modalImage);
 
     let figureCaption = document.createElement("figcaption");
