@@ -4,8 +4,8 @@
       Project 05-01
 
       Project to present an online quiz with a countdown clock
-      Author: 
-      Date:   
+      Author: Rachel White
+      Date: 9/29/2024 
 
       Filename: project05-01.js
 */
@@ -27,38 +27,17 @@ let timeLeft = quizTime;
 // Declare the ID for timed commands
 // and the node list for questions
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*------------- Function to check the student answers ----------------*/
 function checkAnswers() {
-   let correctCount = 0;
-   
-   for (let i = 0; i < questionList.length; i++) {
-      if (questionList[i].value === correctAnswers[i]) {
-         correctCount++;
-         questionList[i].className = "";
-      } else {
-         questionList[i].className = "wronganswer";
-      }      
-   }
-   return correctCount;
-}
+  let correctCount = 0;
 
+  for (let i = 0; i < questionList.length; i++) {
+    if (questionList[i].value === correctAnswers[i]) {
+      correctCount++;
+      questionList[i].className = "";
+    } else {
+      questionList[i].className = "wronganswer";
+    }
+  }
+  return correctCount;
+}
