@@ -53,13 +53,13 @@ function countdown() {
       );
     }
 
-    // Reset quiz state
+    // Reset quiz
     timeLeft = quizTime;
-    document.getElementById("quizclock").value = timeLeft;
-    document.getElementById("overlay").className = "hidequiz";
+    quizClock.value = timeLeft;
+    overlay.className = "hidequiz";
   } else {
     timeLeft--;
-    document.getElementById("quizclock").value = timeLeft;
+    quizClock.value = timeLeft;
   }
 }
 
